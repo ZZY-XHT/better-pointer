@@ -6,29 +6,27 @@ declare const MAIN_WINDOW_WEBPACK_ENTRY: string;
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
-  app.quit();
+    app.quit();
 }
 
 const createWindow = (): void => {
-  //if(process.argv0=="dev"){
-  // eslint-disable-next-line no-constant-condition
-  if(false){
-    const mainWindow = new BrowserWindow({
-      height: 600,
-      width: 800,
-    });
-    mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
-  }else{
-    const mainWindow = new BrowserWindow({
-      height: 600,
-      width: 800,
-      frame:false,
-      transparent:true
-    });
-    mainWindow.setIgnoreMouseEvents(true)
-    mainWindow.setAlwaysOnTop(true)
-    mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
-  }
+    if(process.argv0=='dev'){
+        const mainWindow = new BrowserWindow({
+            height: 600,
+            width: 800,
+        });
+        mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
+    }else{
+        const mainWindow = new BrowserWindow({
+            height: 600,
+            width: 800,
+            frame:false,
+            transparent:true
+        });
+        mainWindow.setIgnoreMouseEvents(true);
+        mainWindow.setAlwaysOnTop(true);
+        mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
+    }
 };
 
 // This method will be called when Electron has finished
@@ -40,17 +38,17 @@ app.on('ready', createWindow);
 // for applications and their menu bar to stay active until the user quits
 // explicitly with Cmd + Q.
 app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit();
-  }
+    if (process.platform !== 'darwin') {
+        app.quit();
+    }
 });
 
 app.on('activate', () => {
-  // On OS X it's common to re-create a window in the app when the
-  // dock icon is clicked and there are no other windows open.
-  if (BrowserWindow.getAllWindows().length === 0) {
-    createWindow();
-  }
+    // On OS X it's common to re-create a window in the app when the
+    // dock icon is clicked and there are no other windows open.
+    if (BrowserWindow.getAllWindows().length === 0) {
+        createWindow();
+    }
 });
 
 // In this file you can include the rest of your app's specific main process

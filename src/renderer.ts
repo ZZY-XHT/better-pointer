@@ -55,7 +55,7 @@ const createScene = () => {
     const ground = BABYLON.Mesh.CreateGround('ground1', 6, 6, 2, scene, false);
     // Return the created scene
     return scene;
-}
+};
 // call the createScene function
 const scene = createScene();
 // run the render loop

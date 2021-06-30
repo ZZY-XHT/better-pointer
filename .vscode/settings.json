@@ -5,12 +5,14 @@
         "**/.hg": true,
         "**/CVS": true,
         "**/.DS_Store": true,
-        ".webpack": true,
         "node_modules": true,
-        "webpack.**": false,
-        "yarn.lock" : true,
+        "yarn.lock":true,
         ".eslintrc.json": true,
-        ".gitignore": true
+        ".gitignore": true,
+        //webpack configs
+        ".webpack": true,
+        "webpack.**": true,
+        "index.d.ts": true
     },
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": true,
