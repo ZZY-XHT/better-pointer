@@ -1,0 +1,1 @@
+wmic process where "Name='electron.exe' and ExecutablePath Like '%%node_modules%%'" delete

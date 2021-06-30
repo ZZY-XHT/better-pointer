@@ -21,21 +21,16 @@
                     "background": {
                         "activeOnStart": true,
                         "beginsPattern": ".",
-                        "endsPattern": ".",
+                        "endsPattern": "."
                     }
                 }
             ]
         },
         {
             "label": "kill-electron",
-            "type": "process",
-            "command": [
-                "${command:workbench.action.tasks.terminate}",
-                "${command:workbench.action.acceptSelectedQuickOpenItem}",
-            ],
-            "args": [
-                "launch-electron"
-            ]
+            "type": "shell",
+            "command": "./.vscode/kill.bat",
+            "problemMatcher": []
         }
     ]
 }
