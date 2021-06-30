@@ -14,7 +14,11 @@ const createWindow = (): void => {
   const mainWindow = new BrowserWindow({
     height: 600,
     width: 800,
+    //frame:false,
+    //transparent:true
   });
+  //mainWindow.setIgnoreMouseEvents(true)
+  //mainWindow.setAlwaysOnTop(true)
 
   // and load the index.html of the app.
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
