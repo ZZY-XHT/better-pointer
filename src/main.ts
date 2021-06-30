@@ -10,21 +10,25 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
 }
 
 const createWindow = (): void => {
-  // Create the browser window.
-  const mainWindow = new BrowserWindow({
-    height: 600,
-    width: 800,
-    //frame:false,
-    //transparent:true
-  });
-  //mainWindow.setIgnoreMouseEvents(true)
-  //mainWindow.setAlwaysOnTop(true)
-
-  // and load the index.html of the app.
-  mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
-
-  // Open the DevTools.
-  // mainWindow.webContents.openDevTools();
+  //if(process.argv0=="dev"){
+  // eslint-disable-next-line no-constant-condition
+  if(false){
+    const mainWindow = new BrowserWindow({
+      height: 600,
+      width: 800,
+    });
+    mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
+  }else{
+    const mainWindow = new BrowserWindow({
+      height: 600,
+      width: 800,
+      frame:false,
+      transparent:true
+    });
+    mainWindow.setIgnoreMouseEvents(true)
+    mainWindow.setAlwaysOnTop(true)
+    mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
+  }
 };
 
 // This method will be called when Electron has finished

@@ -971,6 +971,11 @@ aws4@^1.8.0:
   resolved "https://registry.nlark.com/aws4/download/aws4-1.11.0.tgz#d61f46d83b2519250e2784daf5b09479a8b41c59"
   integrity sha1-1h9G2DslGSUOJ4Ta9bCUeai0HFk=
 
+babylonjs@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.nlark.com/babylonjs/download/babylonjs-4.2.0.tgz#8f0d957a726de4c065904b14c2f413f455145d38"
+  integrity sha1-jw2VenJt5MBlkEsUwvQT9FUUXTg=
+
 balanced-match@^1.0.0:
   version "1.0.2"
   resolved "https://registry.npm.taobao.org/balanced-match/download/balanced-match-1.0.2.tgz#e83e3a7e3f300b34cb9d87f615fa0cbf357690ee"

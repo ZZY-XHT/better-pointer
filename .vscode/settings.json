@@ -11,5 +11,11 @@
         "yarn.lock" : true,
         ".eslintrc.json": true,
         ".gitignore": true
-    }
+    },
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true,
+        "source.fixAll": true,
+        "source.organizeImports": true
+    },
+    "typescript.preferences.quoteStyle": "single",
 }
