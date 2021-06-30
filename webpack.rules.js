@@ -1,4 +1,13 @@
 module.exports = [
+  {
+    test: /\.(png|jpg|gif)$/,
+    use: [
+      {
+        loader: 'file-loader',
+        options: {}
+      }
+    ]
+  },
   // Add support for native node modules
   {
     test: /\.node$/,
@@ -23,5 +32,5 @@ module.exports = [
         transpileOnly: true
       }
     }
-  },
+  }
 ];
