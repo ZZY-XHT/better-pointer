@@ -40,8 +40,8 @@ const createWindow = (): void => {
         mainWindow.setIgnoreMouseEvents(true);
         mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
     }
-    //createTransparentWindow();
-    createNormalWindow();
+    createTransparentWindow();
+    //createNormalWindow();
 };
 
 // This method will be called when Electron has finished
