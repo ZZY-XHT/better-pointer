@@ -9,6 +9,7 @@
             "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron-forge-vscode-win.cmd",
             "cwd": "${workspaceFolder}",
             "console": "integratedTerminal",
+            "internalConsoleOptions": "openOnSessionStart",
             "postDebugTask": "kill-electron"
         },
         {
@@ -17,6 +18,7 @@
             "request": "attach",
             "type": "chrome",
             "webRoot": "${workspaceFolder}",
+            "internalConsoleOptions": "openOnSessionStart",
             "preLaunchTask": "launch-electron",
             "postDebugTask": "kill-electron"
         },
@@ -26,6 +28,7 @@
             "name": "2",
             "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron-forge-vscode-win.cmd",
             "runtimeArgs": [".","--remote-debugging-port=9222"],
+            "internalConsoleOptions": "openOnSessionStart",
             "cwd": "${workspaceFolder}",
             "postDebugTask": "kill-electron"
         }
