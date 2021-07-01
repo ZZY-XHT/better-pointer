@@ -15,6 +15,10 @@ const createWindow = (): void => {
         const mainWindow = new BrowserWindow({
             height: 600,
             width: 800,
+            webPreferences:{
+                nodeIntegration: true,
+                enableRemoteModule: true
+            }
         });
         mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
     }
@@ -23,14 +27,19 @@ const createWindow = (): void => {
             height: 600,
             width: 800,
             frame:false,
-            transparent:true
+            transparent:true,
+            alwaysOnTop:true,
+            fullscreen:true,
+            webPreferences: {
+                nodeIntegration: true,
+                enableRemoteModule: true
+            }
         });
         mainWindow.setIgnoreMouseEvents(true);
-        mainWindow.setAlwaysOnTop(true);
-        mainWindow.setFullScreen(true);
         mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
     }
-    createTransparentWindow();
+    //createTransparentWindow();
+    createNormalWindow();
 };
 
 // This method will be called when Electron has finished

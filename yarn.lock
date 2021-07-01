@@ -41,7 +41,7 @@
     ora "^5.0.0"
     pretty-ms "^7.0.0"
 
-"@electron-forge/cli@^6.0.0-beta.57":
+"@electron-forge/cli@6.0.0-beta.57":
   version "6.0.0-beta.57"
   resolved "https://registry.nlark.com/@electron-forge/cli/download/@electron-forge/cli-6.0.0-beta.57.tgz#62d42e7b242e257ab639dc88bb6023ae295ea9b1"
   integrity sha1-YtQueyQuJXq2OdyIu2AjrileqbE=
@@ -172,7 +172,7 @@
     fs-extra "^10.0.0"
     which "^2.0.2"
 
-"@electron-forge/maker-deb@^6.0.0-beta.57":
+"@electron-forge/maker-deb@6.0.0-beta.57":
   version "6.0.0-beta.57"
   resolved "https://registry.nlark.com/@electron-forge/maker-deb/download/@electron-forge/maker-deb-6.0.0-beta.57.tgz#e2f65ab6e0695a3c6b2dde1308ab8a014a400bfe"
   integrity sha1-4vZatuBpWjxrLd4TCKuKAUpAC/4=
@@ -182,7 +182,7 @@
   optionalDependencies:
     electron-installer-debian "^3.0.0"
 
-"@electron-forge/maker-rpm@^6.0.0-beta.57":
+"@electron-forge/maker-rpm@6.0.0-beta.57":
   version "6.0.0-beta.57"
   resolved "https://registry.nlark.com/@electron-forge/maker-rpm/download/@electron-forge/maker-rpm-6.0.0-beta.57.tgz#3fcdb39a9b4f96c347d2255c4e1a81c70a6118b8"
   integrity sha1-P82zmptPlsNH0iVcThqBxwphGLg=
@@ -192,7 +192,7 @@
   optionalDependencies:
     electron-installer-redhat "^3.2.0"
 
-"@electron-forge/maker-squirrel@^6.0.0-beta.57":
+"@electron-forge/maker-squirrel@6.0.0-beta.57":
   version "6.0.0-beta.57"
   resolved "https://registry.nlark.com/@electron-forge/maker-squirrel/download/@electron-forge/maker-squirrel-6.0.0-beta.57.tgz#e0bf2aa65d38ddd00065e7c46baf3937695f82c6"
   integrity sha1-4L8qpl043dAAZefEa685N2lfgsY=
@@ -203,7 +203,7 @@
   optionalDependencies:
     electron-winstaller "^5.0.0"
 
-"@electron-forge/maker-zip@^6.0.0-beta.57":
+"@electron-forge/maker-zip@6.0.0-beta.57":
   version "6.0.0-beta.57"
   resolved "https://registry.nlark.com/@electron-forge/maker-zip/download/@electron-forge/maker-zip-6.0.0-beta.57.tgz#1162e5d6e3fe2802e46390633331b5ddf70830a7"
   integrity sha1-EWLl1uP+KALkY5BjMzG13fcIMKc=
@@ -6020,10 +6020,10 @@ typedarray@^0.0.6:
   resolved "https://registry.nlark.com/typedarray/download/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@^4.0.2:
-  version "4.3.4"
-  resolved "https://registry.nlark.com/typescript/download/typescript-4.3.4.tgz?cache=0&sync_timestamp=1624951411720&other_urls=https%3A%2F%2Fregistry.nlark.com%2Ftypescript%2Fdownload%2Ftypescript-4.3.4.tgz#3f85b986945bcf31071decdd96cf8bfa65f9dcbc"
-  integrity sha1-P4W5hpRbzzEHHezdls+L+mX53Lw=
+typescript@^4.3.5:
+  version "4.3.5"
+  resolved "https://registry.nlark.com/typescript/download/typescript-4.3.5.tgz?cache=0&sync_timestamp=1625096715594&other_urls=https%3A%2F%2Fregistry.nlark.com%2Ftypescript%2Fdownload%2Ftypescript-4.3.5.tgz#4d1c37cc16e893973c45a06886b7113234f119f4"
+  integrity sha1-TRw3zBbok5c8RaBohrcRMjTxGfQ=
 
 unbox-primitive@^1.0.1:
   version "1.0.1"

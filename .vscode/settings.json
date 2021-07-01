@@ -16,5 +16,8 @@
         "source.fixAll": true,
         "source.organizeImports": true
     },
+    "javascript.preferences.quoteStyle": "single",
     "typescript.preferences.quoteStyle": "single",
+    "files.eol": "\n",
+    "editor.formatOnPaste": true
 }

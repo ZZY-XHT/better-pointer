@@ -32,14 +32,11 @@ function createScene() {
 }
 
 export function initEngine(): void{
+    // printMouseLocation();
     // call the createScene function
     const scene = createScene();
     // run the render loop
     engine.runRenderLoop(() =>{
         scene.render();
-    });
-    // the canvas/window resize event handler
-    window.addEventListener('resize', ()=>{
-        engine.resize();
     });
 }
