@@ -1,4 +1,5 @@
 import * as BABYLON from 'babylonjs';
+import { printMouseLocation } from './mouse';
 // Get the canvas DOM element
 const canvas = document.getElementById('render-canvas') as HTMLCanvasElement;
 // Load the 3D engine
@@ -32,7 +33,7 @@ function createScene() {
 }
 
 export function initEngine(): void{
-    // printMouseLocation();
+    printMouseLocation();
     // call the createScene function
     const scene = createScene();
     // run the render loop

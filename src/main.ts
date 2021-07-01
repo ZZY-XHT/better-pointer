@@ -17,7 +17,8 @@ const createWindow = (): void => {
             width: 800,
             webPreferences:{
                 nodeIntegration: true,
-                enableRemoteModule: true
+                enableRemoteModule: true,
+                contextIsolation: false
             }
         });
         mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
@@ -32,7 +33,8 @@ const createWindow = (): void => {
             fullscreen:true,
             webPreferences: {
                 nodeIntegration: true,
-                enableRemoteModule: true
+                enableRemoteModule: true,
+                contextIsolation: false
             }
         });
         mainWindow.setIgnoreMouseEvents(true);

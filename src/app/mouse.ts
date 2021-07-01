@@ -7,7 +7,7 @@ import { screen, remote } from 'electron';
  */
 export function printMouseLocation():void{
     //screen.getCursorScreenPoint();
-    //const a = remote.screen.getCursorScreenPoint();
-    const a = screen.getCursorScreenPoint();
+    const a = remote.screen.getCursorScreenPoint();
+    //const a = screen.getCursorScreenPoint();
     console.log(a);
 }
