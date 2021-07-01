@@ -27,6 +27,7 @@ const createWindow = (): void => {
         });
         mainWindow.setIgnoreMouseEvents(true);
         mainWindow.setAlwaysOnTop(true);
+        mainWindow.setFullScreen(true);
         mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
     }
     createTransparentWindow();
