@@ -1,34 +1,33 @@
 {
-  "version": "0.2.0",
-  "compounds": [],
-  "configurations": [
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "0",
-      "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron-forge-vscode-win.cmd",
-      "runtimeArgs": ["."],
-      "cwd": "${workspaceFolder}",
-      "console": "integratedTerminal",
-      "postDebugTask": "kill-electron"
-    },
-    {
-      "name": "1",
-      "port": 9222,
-      "request": "attach",
-      "type": "chrome",
-      "webRoot": "${workspaceFolder}",
-      "preLaunchTask": "launch-electron",
-      "postDebugTask": "kill-electron"
-    },
-    {
-      "type": "chrome",
-      "request": "launch",
-      "name": "2",
-      "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron-forge-vscode-win.cmd",
-      "runtimeArgs": [".","--remote-debugging-port=9222"],
-      "cwd": "${workspaceFolder}",
-      "postDebugTask": "kill-electron"
-    }
-  ]
+    "version": "0.2.0",
+    "compounds": [],
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "0",
+            "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron-forge-vscode-win.cmd",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "postDebugTask": "kill-electron"
+        },
+        {
+            "name": "1",
+            "port": 9222,
+            "request": "attach",
+            "type": "chrome",
+            "webRoot": "${workspaceFolder}",
+            "preLaunchTask": "launch-electron",
+            "postDebugTask": "kill-electron"
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "2",
+            "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron-forge-vscode-win.cmd",
+            "runtimeArgs": [".","--remote-debugging-port=9222"],
+            "cwd": "${workspaceFolder}",
+            "postDebugTask": "kill-electron"
+        }
+    ]
 }

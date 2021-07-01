@@ -10,13 +10,15 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
 }
 
 const createWindow = (): void => {
-    if(process.argv0=='dev'){
+    //for dev purpose only
+    function createNormalWindow(){
         const mainWindow = new BrowserWindow({
             height: 600,
             width: 800,
         });
         mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
-    }else{
+    }
+    function createTransparentWindow(){
         const mainWindow = new BrowserWindow({
             height: 600,
             width: 800,
@@ -27,6 +29,7 @@ const createWindow = (): void => {
         mainWindow.setAlwaysOnTop(true);
         mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
     }
+    createTransparentWindow();
 };
 
 // This method will be called when Electron has finished

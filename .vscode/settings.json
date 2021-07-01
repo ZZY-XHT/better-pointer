@@ -8,10 +8,7 @@
         "node_modules": true,
         "yarn.lock":true,
         ".eslintrc.json": true,
-        ".gitignore": true,
-        //webpack configs
-        ".webpack": true,
-        "webpack.**": true,
+        ".git**": true,
         "index.d.ts": true
     },
     "editor.codeActionsOnSave": {
