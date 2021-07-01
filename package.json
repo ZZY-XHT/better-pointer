@@ -84,7 +84,8 @@
         "typescript": "^4.3.5"
     },
     "dependencies": {
-        "babylonjs": "^4.2.0",
-        "electron-squirrel-startup": "^1.0.0"
+        "@types/three": "^0.129.1",
+        "electron-squirrel-startup": "^1.0.0",
+        "three": "^0.130.0"
     }
 }

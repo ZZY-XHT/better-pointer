@@ -1,43 +1,51 @@
-import * as BABYLON from 'babylonjs';
-import { printMouseLocation } from './mouse';
-// Get the canvas DOM element
-const canvas = document.getElementById('render-canvas') as HTMLCanvasElement;
-// Load the 3D engine
-const engine = new BABYLON.Engine(canvas, true, {
-    preserveDrawingBuffer: true, 
-    stencil: true
-},true);
+import * as THREE from 'three';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
-// CreateScene function that creates and return the scene
-function createScene() {
-    // Create a basic BJS Scene object
-    const scene = new BABYLON.Scene(engine);
-    // set transparent background
-    scene.clearColor = new BABYLON.Color4(0, 0, 0, 0);
-    // Create a FreeCamera, and set its position to {x: 0, y: 5, z: -10}
-    const camera = new BABYLON.FreeCamera('camera1', new BABYLON.Vector3(0, 5, -10), scene);
-    // Target the camera to scene origin
-    camera.setTarget(BABYLON.Vector3.Zero());
-    // Attach the camera to the canvas
-    camera.attachControl(canvas, false);
-    // Create a basic light, aiming 0, 1, 0 - meaning, to the sky
-    const light = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(0, 1, 0), scene);
-    // Create a built-in "sphere" shape; its constructor takes 6 params: name, segment, diameter, scene, updatable, sideOrientation
-    const sphere = BABYLON.Mesh.CreateSphere('sphere1', 16, 2, scene, false, BABYLON.Mesh.FRONTSIDE);
-    // Move the sphere upward 1/2 of its height
-    sphere.position.y = 1;
-    // Create a built-in "ground" shape; its constructor takes 6 params : name, width, height, subdivision, scene, updatable
-    const ground = BABYLON.Mesh.CreateGround('ground1', 6, 6, 2, scene, false);
-    // Return the created scene
-    return scene;
-}
+//create a transparent three.js render that uses the canvas in the html
+const canvas = document.getElementById('render-canvas') as HTMLCanvasElement ;
+const renderer = new THREE.WebGLRenderer({
+    canvas: canvas, 
+    //antialiasing uses a lot of memory
+    //antialias: true,
+    alpha: true
+});
+renderer.setClearColor(0x000000, 0);
+//set hidpi and renderer size
+renderer.setPixelRatio(window.devicePixelRatio);
+renderer.setSize(window.innerWidth, window.innerHeight);
 
-export function initEngine(): void{
-    printMouseLocation();
-    // call the createScene function
-    const scene = createScene();
-    // run the render loop
-    engine.runRenderLoop(() =>{
-        scene.render();
-    });
+//create a scene
+const scene = new THREE.Scene();
+
+//add a cylinder to the scene
+const cylinder = new THREE.Mesh(
+    new THREE.CylinderGeometry(0.4, 0.8, 16, 32),
+    new THREE.MeshPhongMaterial({
+        color: 0xff0000,
+        opacity: 0.7,
+        transparent: true
+    })
+);
+cylinder.position.set(0,0,0);
+scene.add(cylinder);
+
+//add light
+const light = new THREE.SpotLight(0xffffff, 3);
+light.position.set(0, 100, 20);
+scene.add(light);
+
+//add camera
+//all coordinate TBC
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.position.set(0, 0, 20);
+camera.lookAt(scene.position);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.update();
+
+function animate() {
+    requestAnimationFrame(animate);
+    controls.update();
+    renderer.render(scene, camera);
 }
+animate();

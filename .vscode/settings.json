@@ -7,7 +7,7 @@
         "**/.DS_Store": true,
         "node_modules": true,
         "yarn.lock":true,
-        ".eslintrc.json": true,
+        //".eslintrc.json": true,
         ".git**": true,
         "index.d.ts": true
     },
@@ -19,5 +19,6 @@
     "javascript.preferences.quoteStyle": "single",
     "typescript.preferences.quoteStyle": "single",
     "files.eol": "\n",
-    "editor.formatOnPaste": true
+    "editor.formatOnPaste": true,
+    "editor.autoClosingBrackets": "always"
 }

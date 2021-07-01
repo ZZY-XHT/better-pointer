@@ -13,8 +13,9 @@ const createWindow = (): void => {
     //for dev purpose only
     function createNormalWindow(){
         const mainWindow = new BrowserWindow({
-            height: 600,
-            width: 800,
+            height: 900,
+            width: 1440,
+            fullscreen: true,
             webPreferences:{
                 nodeIntegration: true,
                 enableRemoteModule: true,
@@ -40,8 +41,8 @@ const createWindow = (): void => {
         mainWindow.setIgnoreMouseEvents(true);
         mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
     }
-    createTransparentWindow();
-    //createNormalWindow();
+    //createTransparentWindow();
+    createNormalWindow();
 };
 
 // This method will be called when Electron has finished

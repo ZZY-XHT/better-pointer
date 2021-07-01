@@ -508,6 +508,11 @@
   resolved "https://registry.nlark.com/@types/retry/download/@types/retry-0.12.0.tgz?cache=0&sync_timestamp=1621244096706&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40types%2Fretry%2Fdownload%2F%40types%2Fretry-0.12.0.tgz#2b35eccfcee7d38cd72ad99232fbd58bffb3c84d"
   integrity sha1-KzXsz87n04zXKtmSMvvVi/+zyE0=
 
+"@types/three@^0.129.1":
+  version "0.129.1"
+  resolved "https://registry.nlark.com/@types/three/download/@types/three-0.129.1.tgz?cache=0&sync_timestamp=1622819759974&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40types%2Fthree%2Fdownload%2F%40types%2Fthree-0.129.1.tgz#e488e686132256dfd61cffd4d97ea6cf176a4a8d"
+  integrity sha1-5IjmhhMiVt/WHP/U2X6mzxdqSo0=
+
 "@types/yauzl@^2.9.1":
   version "2.9.1"
   resolved "https://registry.nlark.com/@types/yauzl/download/@types/yauzl-2.9.1.tgz?cache=0&sync_timestamp=1621244114216&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40types%2Fyauzl%2Fdownload%2F%40types%2Fyauzl-2.9.1.tgz#d10f69f9f522eef3cf98e30afb684a1e1ec923af"
@@ -970,11 +975,6 @@ aws4@^1.8.0:
   version "1.11.0"
   resolved "https://registry.nlark.com/aws4/download/aws4-1.11.0.tgz#d61f46d83b2519250e2784daf5b09479a8b41c59"
   integrity sha1-1h9G2DslGSUOJ4Ta9bCUeai0HFk=
-
-babylonjs@^4.2.0:
-  version "4.2.0"
-  resolved "https://registry.nlark.com/babylonjs/download/babylonjs-4.2.0.tgz#8f0d957a726de4c065904b14c2f413f455145d38"
-  integrity sha1-jw2VenJt5MBlkEsUwvQT9FUUXTg=
 
 balanced-match@^1.0.0:
   version "1.0.2"
@@ -5829,6 +5829,11 @@ text-table@^0.2.0:
   version "0.2.0"
   resolved "https://registry.npm.taobao.org/text-table/download/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
+
+three@^0.130.0:
+  version "0.130.0"
+  resolved "https://registry.nlark.com/three/download/three-0.130.0.tgz#43778a96366fa5e3d1da28c688e8a2bfd8b42aab"
+  integrity sha1-Q3eKljZvpePR2ijGiOiiv9i0Kqs=
 
 throttleit@0.0.2:
   version "0.0.2"

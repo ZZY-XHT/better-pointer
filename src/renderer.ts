@@ -26,6 +26,4 @@
  * ```
  */
 
-import { initEngine } from './app/render';
-
-initEngine();
+import './app/render';
