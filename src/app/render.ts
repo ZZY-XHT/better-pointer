@@ -1,13 +1,11 @@
 import * as THREE from 'three';
-import { Euler, Vector3 } from 'three';
-import { randFloat } from 'three/src/math/MathUtils';
+import { Vector3 } from 'three';
 import { sceneConfig, userConfig } from './config';
 import { getMouseWorldPosition } from './mouse';
 
 //create a transparent three.js render that uses the canvas in the html
-const canvas = document.getElementById('render-canvas') as HTMLCanvasElement ;
 const renderer = new THREE.WebGLRenderer({
-    canvas: canvas,
+    canvas: document.getElementById('render-canvas') as HTMLCanvasElement,
     alpha: true,
     antialias: userConfig.graphics.useAntiAlias
 });
@@ -20,7 +18,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 const scene = new THREE.Scene();
 
 //add a cylinder to the scene
-const cylinder = new THREE.Mesh(
+const stick = new THREE.Mesh(
     new THREE.CylinderGeometry(
         sceneConfig.stickProperty.radiusTop, 
         sceneConfig.stickProperty.radiusBottom,
@@ -28,10 +26,10 @@ const cylinder = new THREE.Mesh(
         sceneConfig.stickProperty.radialSegments
     ),
     new THREE.MeshPhongMaterial({
-        color: 0xff0000
+        color: 0xB87333
     })
 );
-scene.add(cylinder);
+scene.add(stick);
 
 //add light
 const light = new THREE.SpotLight(0xffffff, 3);
@@ -39,7 +37,6 @@ light.position.copy(sceneConfig.objectPositions.light);
 scene.add(light);
 
 //add camera
-//all coordinate TBC
 const camera = new THREE.PerspectiveCamera(
     sceneConfig.cameraProperty.fieldOfView,
     sceneConfig.cameraProperty.aspectRatio,
@@ -49,11 +46,22 @@ const camera = new THREE.PerspectiveCamera(
 camera.position.copy(sceneConfig.objectPositions.camera);
 camera.lookAt(scene.position);
 
+/**
+ * Place the cylinder with current rotation angle
+ * s.t. **top** is the coordinate of upper surface center of the cylinder
+ */
+function placeStickTop(top: THREE.Vector3){
+    //find displacement from top point to middle point
+    const disp = new Vector3(0, -sceneConfig.stickProperty.length / 2, 0);
+    disp.applyQuaternion(stick.quaternion);
+    //transform top point to middle point
+    stick.position.copy(top.add(disp));
+}
+
+stick.rotation.set(1, 2, -1);
 function animate() {
     requestAnimationFrame(animate);
-    cylinder.rotation.copy(new Euler(0, 0, randFloat(-0.01, 0.01)));
-    cylinder.position.copy(getMouseWorldPosition(camera)).add((new Vector3(0, -sceneConfig.stickProperty.length / 2, 0)).applyQuaternion(cylinder.quaternion));
-    // cylinder.rotateX(-0.05 * coef);
+    placeStickTop(getMouseWorldPosition(camera));
     renderer.render(scene, camera);
 }
 animate();
