@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { getMouseWorldPosition } from './mouse';
 
 //create a transparent three.js render that uses the canvas in the html
 const canvas = document.getElementById('render-canvas') as HTMLCanvasElement ;
@@ -21,9 +21,7 @@ const scene = new THREE.Scene();
 const cylinder = new THREE.Mesh(
     new THREE.CylinderGeometry(0.4, 0.8, 16, 32),
     new THREE.MeshPhongMaterial({
-        color: 0xff0000,
-        opacity: 0.7,
-        transparent: true
+        color: 0xff0000
     })
 );
 cylinder.position.set(0,0,0);
@@ -40,12 +38,11 @@ const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerH
 camera.position.set(0, 0, 20);
 camera.lookAt(scene.position);
 
-const controls = new OrbitControls(camera, renderer.domElement);
-controls.update();
 
 function animate() {
     requestAnimationFrame(animate);
-    controls.update();
+    cylinder.position.copy(getMouseWorldPosition(camera));
+    cylinder.rotateX(0.05);
     renderer.render(scene, camera);
 }
 animate();

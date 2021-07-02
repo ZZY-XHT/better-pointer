@@ -20,5 +20,5 @@
     "typescript.preferences.quoteStyle": "single",
     "files.eol": "\n",
     "editor.formatOnPaste": true,
-    "editor.autoClosingBrackets": "always"
+    //"editor.autoClosingBrackets": "always"
 }
