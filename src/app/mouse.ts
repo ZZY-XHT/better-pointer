@@ -7,11 +7,12 @@ import * as THREE from 'three';
  * even if our window is in fullscreen
  */
 export function getMouseCanvasPosition(): Electron.Point{
+    //TODO: consider multiple screen
     return remote.screen.getCursorScreenPoint();
 }
 
 export function getMouseWorldPosition(camera: THREE.PerspectiveCamera): THREE.Vector3{
-    const {x: mouseX,y: mouseY} = getMouseCanvasPosition();
+    const {x: mouseX, y: mouseY} = getMouseCanvasPosition();
     const vec = new THREE.Vector3(
         (mouseX / window.innerWidth) * 2 - 1,
         -(mouseY / window.innerHeight) * 2 + 1,
