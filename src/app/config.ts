@@ -13,7 +13,7 @@ export const sceneConfig = {
         nearPlane: 0.1,
         farPlane: 200
     },
-    objectPositions:{
+    objectPositions:{ 
         camera: new Vector3(0,0,20),
         light: new Vector3(0,100,20)
     }
