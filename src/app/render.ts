@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { Vector3 } from 'three';
 import { sceneConfig, userConfig } from './config';
-import { getMouseWorldPosition } from './mouse';
+import { getMouseCanvasPosition } from './mouse';
 
 //create a transparent three.js render that uses the canvas in the html
 const renderer = new THREE.WebGLRenderer({
@@ -29,6 +29,7 @@ const stick = new THREE.Mesh(
         color: 0xB87333
     })
 );
+stick.rotation.set(1, 2, -1);
 scene.add(stick);
 
 //add light
@@ -47,6 +48,22 @@ camera.position.copy(sceneConfig.objectPositions.camera);
 camera.lookAt(scene.position);
 
 /**
+ * Return a point on the *xy* plane,
+ * that will be rendered at current mouse location.
+ */
+export function getMouseWorldPosition(): THREE.Vector3 {
+    const { x: mouseX, y: mouseY } = getMouseCanvasPosition();
+    const vec = new THREE.Vector3(
+        (mouseX / window.innerWidth) * 2 - 1,
+        -(mouseY / window.innerHeight) * 2 + 1,
+        0.5);
+    vec.unproject(camera).sub(camera.position);
+    const distance = - camera.position.z / vec.z;
+    vec.multiplyScalar(distance).add(camera.position);
+    return vec;
+}
+
+/**
  * Place the cylinder with current rotation angle
  * s.t. **top** is the coordinate of upper surface center of the cylinder
  */
@@ -58,10 +75,12 @@ function placeStickTop(top: THREE.Vector3){
     stick.position.copy(top.add(disp));
 }
 
-stick.rotation.set(1, 2, -1);
+/**
+ * The render loop
+ */
 function animate() {
     requestAnimationFrame(animate);
-    placeStickTop(getMouseWorldPosition(camera));
+    placeStickTop(getMouseWorldPosition());
     renderer.render(scene, camera);
 }
 animate();
