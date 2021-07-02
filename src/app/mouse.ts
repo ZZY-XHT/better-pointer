@@ -17,10 +17,8 @@ export function getMouseWorldPosition(camera: THREE.PerspectiveCamera): THREE.Ve
         (mouseX / window.innerWidth) * 2 - 1,
         -(mouseY / window.innerHeight) * 2 + 1,
         0.5);
-    vec.unproject(camera);
-    vec.sub(camera.position).normalize();
+    vec.unproject(camera).sub(camera.position);
     const distance = - camera.position.z / vec.z;
-    const ans = new THREE.Vector3();
-    ans.copy(camera.position).add(vec.multiplyScalar(distance));
-    return ans;
+    vec.multiplyScalar(distance).add(camera.position);
+    return vec;
 }
