@@ -1,11 +1,13 @@
 import * as THREE from 'three';
+import { Euler, Vector3 } from 'three';
+import { randFloat } from 'three/src/math/MathUtils';
 import { sceneConfig, userConfig } from './config';
 import { getMouseWorldPosition } from './mouse';
 
 //create a transparent three.js render that uses the canvas in the html
 const canvas = document.getElementById('render-canvas') as HTMLCanvasElement ;
 const renderer = new THREE.WebGLRenderer({
-    canvas: canvas, 
+    canvas: canvas,
     alpha: true,
     antialias: userConfig.graphics.useAntiAlias
 });
@@ -47,11 +49,11 @@ const camera = new THREE.PerspectiveCamera(
 camera.position.copy(sceneConfig.objectPositions.camera);
 camera.lookAt(scene.position);
 
-
 function animate() {
     requestAnimationFrame(animate);
-    cylinder.position.copy(getMouseWorldPosition(camera));
-    cylinder.rotateX(-0.05);
+    cylinder.rotation.copy(new Euler(0, 0, randFloat(-0.01, 0.01)));
+    cylinder.position.copy(getMouseWorldPosition(camera)).add((new Vector3(0, -sceneConfig.stickProperty.length / 2, 0)).applyQuaternion(cylinder.quaternion));
+    // cylinder.rotateX(-0.05 * coef);
     renderer.render(scene, camera);
 }
 animate();

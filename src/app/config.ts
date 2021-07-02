@@ -2,9 +2,9 @@ import { Vector3 } from 'three';
 
 export const sceneConfig = {
     stickProperty:{
-        radiusTop: 0.4,
-        radiusBottom: 0.8,
-        length: 16,
+        radiusTop: 0.3,
+        radiusBottom: 0.4,
+        length: 32,
         radialSegments: 32
     },
     cameraProperty:{
