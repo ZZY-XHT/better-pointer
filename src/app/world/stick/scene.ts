@@ -1,15 +1,18 @@
 import * as THREE from 'three';
-import { sceneConfig, userConfig } from './config';
+import { sceneConfig } from './config';
 import { getMouseCanvasPosition } from '../../util/mouse';
 
 export class Scene{
-    renderer = new THREE.WebGLRenderer({
-        canvas: document.getElementById('render-canvas') as HTMLCanvasElement,
-        alpha: true,
-        antialias: userConfig.graphics.useAntiAlias
-    });
     scene = new THREE.Scene();
-    stick = new THREE.Mesh(
+
+    protected camera = new THREE.PerspectiveCamera(
+        sceneConfig.cameraProperty.fieldOfView,
+        sceneConfig.cameraProperty.aspectRatio,
+        sceneConfig.cameraProperty.nearPlane,
+        sceneConfig.cameraProperty.farPlane
+    );
+
+    private stick = new THREE.Mesh(
         new THREE.CylinderGeometry(
             sceneConfig.stickProperty.radiusTop,
             sceneConfig.stickProperty.radiusBottom,
@@ -20,33 +23,15 @@ export class Scene{
             color: 0xB87333
         })
     );
-    light = new THREE.SpotLight(0xffffff, 3);
-    camera = new THREE.PerspectiveCamera(
-        sceneConfig.cameraProperty.fieldOfView,
-        sceneConfig.cameraProperty.aspectRatio,
-        sceneConfig.cameraProperty.nearPlane,
-        sceneConfig.cameraProperty.farPlane
-    );
-    tmp1 = new THREE.Mesh(
-        new THREE.SphereGeometry(0.4, 32, 32),
-        new THREE.MeshBasicMaterial({ color: 0xffff00 })
-    );
+    private light = new THREE.SpotLight(0xffffff, 3);
 
     constructor(){
-        this.renderer.setClearColor(0x000000, 0);
-        this.renderer.setPixelRatio(userConfig.graphics.pixelRatio);
-        this.renderer.setSize(window.innerWidth, window.innerHeight);
-
         this.scene.add(this.stick);
-
         this.light.position.copy(sceneConfig.objectPositions.light);
         this.scene.add(this.light);
 
         this.camera.position.copy(sceneConfig.objectPositions.camera);
         this.camera.lookAt(this.scene.position);
-
-        this.tmp1.position.set(0, -5, 10);
-        this.scene.add(this.tmp1);
     }
 
     /**

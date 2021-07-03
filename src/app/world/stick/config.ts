@@ -18,12 +18,3 @@ export const sceneConfig = {
         light: new Vector3(0,100,20)
     }
 };
-
-//TODO: user a proper json loader
-//TODO: add documentation
-export const userConfig = {
-    graphics:{
-        useAntiAlias: false,
-        pixelRatio: window.devicePixelRatio
-    }
-};
