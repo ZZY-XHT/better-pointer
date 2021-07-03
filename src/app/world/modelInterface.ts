@@ -1,0 +1,3 @@
+interface ModelInterface{
+    updateCanvas(): void
+}

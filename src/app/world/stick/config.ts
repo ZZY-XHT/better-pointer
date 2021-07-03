@@ -4,7 +4,7 @@ export const sceneConfig = {
     stickProperty:{
         radiusTop: 0.3,
         radiusBottom: 0.4,
-        length: 32,
+        length: 60,
         radialSegments: 32
     },
     cameraProperty:{
