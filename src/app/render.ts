@@ -47,6 +47,12 @@ const camera = new THREE.PerspectiveCamera(
 camera.position.copy(sceneConfig.objectPositions.camera);
 camera.lookAt(scene.position);
 
+const tmp1 = new THREE.Mesh(
+    new THREE.SphereGeometry(1,32,32),
+    new THREE.MeshBasicMaterial({ color: 0xffff00 })
+);
+tmp1.position.set(0,0,0);
+scene.add(tmp1);
 /**
  * Return a point on the *xy* plane,
  * that will be rendered at current mouse location.
@@ -64,7 +70,7 @@ export function getMouseWorldPosition(): THREE.Vector3 {
 }
 
 /**
- * Place the cylinder with current rotation angle
+ * Place the stick with current rotation angle
  * s.t. **top** is the coordinate of upper surface center of the cylinder
  */
 function placeStickTop(top: THREE.Vector3){
@@ -72,15 +78,59 @@ function placeStickTop(top: THREE.Vector3){
     const disp = new Vector3(0, -sceneConfig.stickProperty.length / 2, 0);
     disp.applyQuaternion(stick.quaternion);
     //transform top point to middle point
-    stick.position.copy(top.add(disp));
+    //stick.position.addVectors(top, disp);
 }
+
+/**
+ * Place the stick with current rotation angle
+ * s.t. **bottom** is the coordinate of lower surface center of the cylinder
+ */
+function placeStickBottom(bottom: THREE.Vector3) {
+    const disp = new Vector3(0, sceneConfig.stickProperty.length / 2, 0);
+    disp.applyQuaternion(stick.quaternion);
+    stick.position.addVectors(bottom,disp);
+}
+
+/**
+ * Place the stick
+ * s.t. **top** is the coordinate of upper surface center of the cylinder
+ * **p** is on the stick or the extension of the stick
+ */
+function placeStickTopLine(top: THREE.Vector3, p: THREE.Vector3){
+    //find the displacement from top to middle
+    p.sub(top).normalize();
+    //set direction
+    const axis = new THREE.Vector3(0, -1, 0);
+    stick.quaternion.setFromUnitVectors(axis, p.normalize());
+    //set middle point
+    p.multiplyScalar(sceneConfig.stickProperty.length/2);
+    stick.position.addVectors(top,p);
+}
+
+/**
+ * Place the stick
+ * s.t. **bottom** is the coordinate of upper surface center of the cylinder
+ * **p** is on the stick or the extension of the stick
+ */
+function placeStickBottomLine(bottom: THREE.Vector3, p: THREE.Vector3) {
+    //find the displacement from top to middle
+    p.sub(bottom).normalize();
+    //set direction
+    const axis = new THREE.Vector3(0, 1, 0);
+    stick.quaternion.setFromUnitVectors(axis, p.normalize());
+    //set middle point
+    p.multiplyScalar(sceneConfig.stickProperty.length / 2);
+    stick.position.addVectors(bottom, p);
+}
+
 
 /**
  * The render loop
  */
 function animate() {
     requestAnimationFrame(animate);
-    placeStickTop(getMouseWorldPosition());
+    //placeStickBottom(getMouseWorldPosition());
+    placeStickTopLine(getMouseWorldPosition(),new Vector3(0,0,0));
     renderer.render(scene, camera);
 }
 animate();
