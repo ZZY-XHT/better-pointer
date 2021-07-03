@@ -48,10 +48,10 @@ camera.position.copy(sceneConfig.objectPositions.camera);
 camera.lookAt(scene.position);
 
 const tmp1 = new THREE.Mesh(
-    new THREE.SphereGeometry(1,32,32),
+    new THREE.SphereGeometry(0.4,32,32),
     new THREE.MeshBasicMaterial({ color: 0xffff00 })
 );
-tmp1.position.set(0,0,0);
+tmp1.position.set(0,-5,10);
 scene.add(tmp1);
 /**
  * Return a point on the *xy* plane,
@@ -130,7 +130,7 @@ function placeStickBottomLine(bottom: THREE.Vector3, p: THREE.Vector3) {
 function animate() {
     requestAnimationFrame(animate);
     //placeStickBottom(getMouseWorldPosition());
-    placeStickTopLine(getMouseWorldPosition(),new Vector3(0,0,0));
+    placeStickTopLine(getMouseWorldPosition(),new Vector3(0,-5,10));
     renderer.render(scene, camera);
 }
 animate();
