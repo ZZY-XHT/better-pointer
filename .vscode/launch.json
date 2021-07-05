@@ -10,7 +10,8 @@
             "cwd": "${workspaceFolder}",
             "console": "integratedTerminal",
             "internalConsoleOptions": "openOnSessionStart",
-            "postDebugTask": "kill-electron"
+            "postDebugTask": "kill-electron",
+            "timeout": 30000
         },
         {
             "name": "1",
@@ -20,7 +21,8 @@
             "webRoot": "${workspaceFolder}",
             "internalConsoleOptions": "openOnSessionStart",
             "preLaunchTask": "launch-electron",
-            "postDebugTask": "kill-electron"
+            "postDebugTask": "kill-electron",
+            "timeout": 30000
         },
         {
             "type": "chrome",
@@ -30,7 +32,8 @@
             "runtimeArgs": [".","--remote-debugging-port=9222"],
             "internalConsoleOptions": "openOnSessionStart",
             "cwd": "${workspaceFolder}",
-            "postDebugTask": "kill-electron"
+            "postDebugTask": "kill-electron",
+            "timeout": 30000
         }
     ]
 }

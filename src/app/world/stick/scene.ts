@@ -1,6 +1,6 @@
 import * as THREE from 'three';
-import { sceneConfig } from './config';
 import { getMouseCanvasPosition } from '../../util/mouse';
+import { sceneConfig } from './config';
 
 export class Scene{
     scene = new THREE.Scene();
@@ -49,6 +49,33 @@ export class Scene{
         vec.multiplyScalar(distance).add(this.camera.position);
         return vec;
     }
+
+    /**
+     * Return the coordinate of upper center of the stick
+     * The coordinate is calculated through mid point and length each time
+     * So it might be better for Models to cache this value.
+     */
+    getStickTopPosition(): THREE.Vector3 {
+        const mid = this.stick.position.clone();
+        const disp = new THREE.Vector3(0, sceneConfig.stickProperty.length / 2, 0);
+        disp.applyQuaternion(this.stick.quaternion);
+        mid.add(disp);
+        return mid;
+    }
+
+    /**
+     * Return the coordinate of bottom center of the stick
+     * The coordinate is calculated through mid point and length each time
+     * So it might be better for Models to cache this value.
+     */
+    getStickBottomPosition(): THREE.Vector3 {
+        const mid = this.stick.position.clone();
+        const disp = new THREE.Vector3(0, -sceneConfig.stickProperty.length / 2, 0);
+        disp.applyQuaternion(this.stick.quaternion);
+        mid.add(disp);
+        return mid;
+    }
+
 
     placeStickTop(top: THREE.Vector3){
         //find displacement from top point to middle point
