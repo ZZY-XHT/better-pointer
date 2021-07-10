@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    runs-on: ['windows-latest','ubuntu-latest']
+    runs-on: 'windows-latest'
 
     steps:
       - uses: actions/checkout@v2
@@ -25,5 +25,5 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: my-artifact
-          path: ./out/make 
+          path: ./out/make/squirrel.windows/x64/
 
