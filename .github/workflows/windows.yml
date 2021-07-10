@@ -16,8 +16,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Install
-        uses: bahmutov/npm-install@HEAD
+      - uses: c-hive/gha-yarn-cache@v2
+
+      - name: Yarn Install
+        run: yarn install
 
       - name: Make
         run: yarn make
