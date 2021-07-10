@@ -13,6 +13,11 @@
                 "start",
                 "--remote-debugging-port=9222"
             ],
+            "options": {
+                "env": {
+                    "ELECTRON_DISABLE_SECURITY_WARNINGS": "true"
+                }
+            },
             "problemMatcher": [
                 {
                     "pattern": [

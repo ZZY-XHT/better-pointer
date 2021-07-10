@@ -1,4 +1,4 @@
-import { remote } from 'electron';
+import {screen} from '@electron/remote';
 
 /**
  * Return the coordinate of the mouse,
@@ -9,5 +9,5 @@ import { remote } from 'electron';
  */
 export function getMouseCanvasPosition(): Electron.Point{
     //TODO: consider multiple screen
-    return remote.screen.getCursorScreenPoint();
+    return screen.getCursorScreenPoint();
 }

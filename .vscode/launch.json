@@ -5,7 +5,7 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "0",
+            "name": "main",
             "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron-forge-vscode-win.cmd",
             "cwd": "${workspaceFolder}",
             "console": "integratedTerminal",
@@ -14,24 +14,13 @@
             "timeout": 30000
         },
         {
-            "name": "1",
+            "name": "render",
             "port": 9222,
             "request": "attach",
             "type": "chrome",
             "webRoot": "${workspaceFolder}",
             "internalConsoleOptions": "openOnSessionStart",
             "preLaunchTask": "launch-electron",
-            "postDebugTask": "kill-electron",
-            "timeout": 30000
-        },
-        {
-            "type": "chrome",
-            "request": "launch",
-            "name": "2",
-            "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron-forge-vscode-win.cmd",
-            "runtimeArgs": [".","--remote-debugging-port=9222"],
-            "internalConsoleOptions": "openOnSessionStart",
-            "cwd": "${workspaceFolder}",
             "postDebugTask": "kill-electron",
             "timeout": 30000
         }
