@@ -1,9 +1,11 @@
-import {screen} from '@electron/remote';
+//import { screen } from '@electron/remote';
 
 export interface MousePoint{
     x: number,
     y: number
 }
+
+const y=1000;
 
 /**
  * Return the coordinate of the mouse,
@@ -14,5 +16,10 @@ export interface MousePoint{
  */
 export function getMouseCanvasPosition(): MousePoint{
     //TODO: consider multiple screen
-    return screen.getCursorScreenPoint();
+    //console.log(screen.getCursorScreenPoint());
+    //return screen.getCursorScreenPoint();
+    return {
+        x: 537,
+        y: 477
+    };
 }

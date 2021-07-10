@@ -1,4 +1,4 @@
-import { Model } from './app/world/stick/model2';
+import { Model } from './app/world/stick/model4';
 
 const model = new Model();
 

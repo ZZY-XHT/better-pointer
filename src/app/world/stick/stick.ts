@@ -3,7 +3,7 @@ import * as THREE from 'three';
 export const stickProperty={
     radiusTop: 0.3,
     radiusBottom: 0.4,
-    length: 60,
+    length: 5,
     radialSegments: 32
 };
 
@@ -72,7 +72,7 @@ export class Stick {
      */
     placeTopLine(top: THREE.Vector3, p: THREE.Vector3):void {
         //find the displacement from top to middle
-        p.sub(top).normalize();
+        p=p.clone().sub(top).normalize();
         //set direction
         const axis = new THREE.Vector3(0, -1, 0);
         this.stick.quaternion.setFromUnitVectors(axis, p.normalize());

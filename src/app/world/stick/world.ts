@@ -1,3 +1,4 @@
+import { MousePoint } from '../../util/mouse';
 import * as THREE from 'three';
 import { Stick } from './stick';
 
@@ -27,7 +28,7 @@ export class World{
      * Return a point on the *xy* plane,
      * that will be rendered at current mouse location.
      */
-    getMouseWorldPosition(screen2: Electron.Point): THREE.Vector3 {
+    getMouseWorldPosition(screen2: MousePoint): THREE.Vector3 {
         const { x: mouseX, y: mouseY } = screen2;
         const vec = new THREE.Vector3(
             (mouseX / window.innerWidth) * 2 - 1,

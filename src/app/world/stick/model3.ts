@@ -1,11 +1,11 @@
 import * as THREE from 'three';
-import { MousePoint } from '../../util/mouse';
 import { randFloat } from 'three/src/math/MathUtils';
+import { MousePoint } from '../../util/mouse';
 import { createRenderer, IModel } from '../interface';
-import { World } from './world';
 import { stickProperty } from './stick';
+import { World } from './world';
 
-const k=0.9999;
+const k=1;
 export class Model extends IModel {
     renderer = createRenderer();
     world = new World();
@@ -13,26 +13,32 @@ export class Model extends IModel {
 
     updateCanvas(screen2: MousePoint): void {
         const len = stickProperty.length;
-        //const newTop = new Vector3(0,5,0);
-        //const curBottom = new Vector3(0,0,0);
+        //const newTop = new THREE.Vector3(0,5,0);
+        //const curBottom = new THREE.Vector3(0,0,0);
         const newTop = this.world.getMouseWorldPosition(screen2);
         const curBottom = this.stick.getBottom();
-        const disp = curBottom.clone().sub(newTop).normalize();
-        const newbase = newTop.clone().addScaledVector(disp,k*len);
+        const basey = curBottom.clone().sub(newTop).normalize();
+        const newbase = newTop.clone().addScaledVector(basey,k*len);
         const r = Math.sqrt(1-k*k) * len;
         
-        const xAxis = new THREE.Vector3(1,0,0);
-        const xbase = disp.clone().applyAxisAngle(xAxis, Math.PI/2);
+        //construct a point on the plane
+        const pointOnPlane = new THREE.Vector3(0,0,0);
+        const b = basey.dot(newbase);
+        if(Math.abs(basey.x)>1e-5) pointOnPlane.x=b/basey.x;
+        else if (Math.abs(basey.y) > 1e-5) pointOnPlane.y = b / basey.y;
+        else pointOnPlane.z = b / basey.z;
 
-        const zAxis = new THREE.Vector3(0,0,1);
-        const zbase = disp.clone().applyAxisAngle(zAxis, Math.PI/2);
+        const basex = newbase.clone().sub(pointOnPlane).normalize();
+        const basez = basey.cross(basex).normalize();
+        
+        console.log(basex,basey,basez);
 
-        const theta = randFloat(0, 2* Math.PI);
+        const theta = randFloat(0, 0.1* Math.PI);
 
-        const newBottom = newbase.addScaledVector(xbase,r*Math.sin(theta))
-            .addScaledVector(zbase,r*Math.cos(theta));
+        const newBottom = newbase
+            .addScaledVector(basex,r*Math.sin(theta))
+            .addScaledVector(basez,r*Math.cos(theta));
 
-        console.log(curBottom);
         this.stick.placeTopLine(newTop, newBottom);
         this.renderer.render(this.world.scene, this.world.camera);
     }
