@@ -3,7 +3,7 @@ import * as THREE from 'three';
 export const stickProperty={
     radiusTop: 0.3,
     radiusBottom: 0.4,
-    length: 5,
+    length: 50,
     radialSegments: 32
 };
 
@@ -43,10 +43,11 @@ export class Stick {
         const mid = this.stick.position.clone();
         const disp = new THREE.Vector3(0, stickProperty.length / 2, 0);
         disp.applyQuaternion(this.stick.quaternion);
-        mid.add(disp);
+        mid.sub(disp);
         return mid;
     }
 
+    /*
     placeTopAng(top: THREE.Vector3):void {
         //find displacement from top point to middle point
         const disp = new THREE.Vector3(0, stickProperty.length / 2, 0);
@@ -55,15 +56,12 @@ export class Stick {
         this.stick.position.addVectors(top, disp);
     }
 
-    /**
-     * Place the stick with current rotation angle
-     * s.t. **bottom** is the coordinate of lower surface center of the cylinder
-     */
     placeBottomAng(bottom: THREE.Vector3):void {
         const disp = new THREE.Vector3(0, stickProperty.length / 2, 0);
         disp.applyQuaternion(this.stick.quaternion);
         this.stick.position.addVectors(bottom, disp);
     }
+    */
 
     /**
      * Place the stick
@@ -72,7 +70,7 @@ export class Stick {
      */
     placeTopLine(top: THREE.Vector3, p: THREE.Vector3):void {
         //find the displacement from top to middle
-        p=p.clone().sub(top).normalize();
+        p=p.sub(top).normalize();
         //set direction
         const axis = new THREE.Vector3(0, -1, 0);
         this.stick.quaternion.setFromUnitVectors(axis, p.normalize());

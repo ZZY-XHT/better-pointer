@@ -8,13 +8,10 @@ export abstract class IModel {
     update(): void {
         
         const curMousePoint = getMouseCanvasPosition();
-        /*
         if (this.lastMousePoint.x != curMousePoint.x || this.lastMousePoint.y != curMousePoint.y){
             this.updateCanvas(curMousePoint);
         }
         this.lastMousePoint = curMousePoint;
-        */
-        this.updateCanvas(curMousePoint);
     }
 }
 

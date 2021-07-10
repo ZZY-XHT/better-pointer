@@ -24,8 +24,8 @@ export class Model extends IModel{
 
     updateCanvas(screen2: MousePoint): void {
         const screen3 = this.world.getMouseWorldPosition(screen2);
-        this.stick.placeBottomLine(screen3,this.anchor.clone());
-        this.ball.position.copy(this.stick.getBottom());
+        this.stick.placeTopLine(screen3,this.anchor.clone());
+        this.ball.position.copy(this.stick.getTop());
         this.renderer.render(this.world.scene, this.world.camera);
     }
 }
