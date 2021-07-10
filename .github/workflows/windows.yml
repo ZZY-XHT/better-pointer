@@ -26,6 +26,6 @@ jobs:
       
       - uses: actions/upload-artifact@v2
         with:
-          name: my-artifact
+          name: windows-build.zip
           path: ./out/make/**/**/*.exe
 
