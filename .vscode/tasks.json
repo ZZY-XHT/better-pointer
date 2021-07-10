@@ -18,6 +18,14 @@
                     "ELECTRON_DISABLE_SECURITY_WARNINGS": "true"
                 }
             },
+            "presentation": {
+                "echo": true,
+                "reveal": "never",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": false,
+                "clear": true
+            },
             "problemMatcher": [
                 {
                     "pattern": [

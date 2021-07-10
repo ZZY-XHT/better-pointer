@@ -1,9 +1,9 @@
-import { Model2 } from './app/world/stick/model2';
+import { Model } from './app/world/stick/model2';
 
-const model = new Model2();
+const model = new Model();
 
 function animate() {
     requestAnimationFrame(animate);
-    model.updateCanvas();
+    model.update();
 }
 animate();
