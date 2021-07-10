@@ -1,4 +1,4 @@
-name: Build MacOS
+name: Build uBuntu
 
 on:
   push:
@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    runs-on: 'macos-latest'
+    runs-on: 'ubuntu-latest'
 
     steps:
       - uses: actions/checkout@v2
@@ -26,6 +26,6 @@ jobs:
       
       - uses: actions/upload-artifact@v2
         with:
-          name: macos-build.zip
-          path: ./out/make/**/**/*.dmg
+          name: ubuntu-build.zip
+          path: ./out/make/**/**/*.deb
 
