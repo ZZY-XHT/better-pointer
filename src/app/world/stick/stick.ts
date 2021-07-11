@@ -47,22 +47,6 @@ export class Stick {
         return mid;
     }
 
-    /*
-    placeTopAng(top: THREE.Vector3):void {
-        //find displacement from top point to middle point
-        const disp = new THREE.Vector3(0, stickProperty.length / 2, 0);
-        disp.applyQuaternion(this.stick.quaternion);
-        //transform top point to middle point
-        this.stick.position.addVectors(top, disp);
-    }
-
-    placeBottomAng(bottom: THREE.Vector3):void {
-        const disp = new THREE.Vector3(0, stickProperty.length / 2, 0);
-        disp.applyQuaternion(this.stick.quaternion);
-        this.stick.position.addVectors(bottom, disp);
-    }
-    */
-
     /**
      * Place the stick
      * s.t. **top** is the coordinate of upper surface center of the cylinder
@@ -84,6 +68,7 @@ export class Stick {
      * s.t. **bottom** is the coordinate of upper surface center of the cylinder
      * **p** is on the stick or the extension of the stick
      */
+    /*
     placeBottomLine(bottom: THREE.Vector3, p: THREE.Vector3):void {
         //find the displacement from top to middle
         p.sub(bottom).normalize();
@@ -95,4 +80,18 @@ export class Stick {
         this.stick.position.addVectors(bottom, p);
     }
 
+    placeTopAng(top: THREE.Vector3):void {
+        //find displacement from top point to middle point
+        const disp = new THREE.Vector3(0, stickProperty.length / 2, 0);
+        disp.applyQuaternion(this.stick.quaternion);
+        //transform top point to middle point
+        this.stick.position.addVectors(top, disp);
+    }
+
+    placeBottomAng(bottom: THREE.Vector3):void {
+        const disp = new THREE.Vector3(0, stickProperty.length / 2, 0);
+        disp.applyQuaternion(this.stick.quaternion);
+        this.stick.position.addVectors(bottom, disp);
+    }
+    */
 }

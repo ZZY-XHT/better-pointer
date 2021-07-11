@@ -12,7 +12,7 @@ export class Model extends IModel {
 
 
     test(bottom: THREE.Vector3): boolean {
-        return -30 <= bottom.x && bottom.x <= 30 && -80 <= bottom.y && bottom.y <= -20 && -10 <= bottom.z && bottom.z <= -3;
+        return -30 <= bottom.x && bottom.x <= 30 && -80 <= bottom.y && bottom.y <= -20 && 3 <= bottom.z && bottom.z <= 10;
     }
 
     updateCanvas(screen2: MousePoint): void {
@@ -26,7 +26,8 @@ export class Model extends IModel {
 
         const curBottom = this.stick.getBottom();
         const newTop = this.world.getMouseWorldPosition(screen2);
-        let newDirection = new THREE.Vector3(0, -80, -10).sub(newTop).normalize();
+        console.log(curBottom);
+        let newDirection = new THREE.Vector3(0, -80, 10).sub(newTop).normalize();
         const p = newDirection.clone().multiplyScalar(stickProperty.length);
         let newBottom = p.clone().add(newTop);
         if (!this.test(newBottom)) {
