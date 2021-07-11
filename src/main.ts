@@ -19,11 +19,12 @@ const createWindow = (): void => {
         const mainWindow = new BrowserWindow({
             x:0,
             y:0,
-            height: screen.getPrimaryDisplay().size.height,
-            width: screen.getPrimaryDisplay().size.width,
+            height: screen.getPrimaryDisplay().workAreaSize.height,
+            width: screen.getPrimaryDisplay().workAreaSize.width,
             frame: false,
             transparent: true,
             alwaysOnTop: true,
+            hasShadow: false,
             webPreferences:{
                 nodeIntegration: true,
                 enableRemoteModule: true,
@@ -39,6 +40,7 @@ const createWindow = (): void => {
             transparent:true,
             alwaysOnTop:true,
             fullscreen:true,
+            hasShadow: false,
             webPreferences: {
                 nodeIntegration: true,
                 enableRemoteModule: true,
