@@ -16,16 +16,16 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
 
 const createWindow = (): void => {
     function createFakeFullScreenWindow(){
-        const bound = screen.getPrimaryDisplay().bounds;
         const mainWindow = new BrowserWindow({
-            x:bound.x,
-            y:bound.y,
-            height: bound.height,
-            width: bound.width,
+            x:0,
+            y:0,
+            height: screen.getPrimaryDisplay().size.height,
+            width: screen.getPrimaryDisplay().size.width,
             frame: false,
             transparent: true,
             alwaysOnTop: true,
             hasShadow: false,
+            enableLargerThanScreen: true,
             webPreferences:{
                 nodeIntegration: true,
                 enableRemoteModule: true,
