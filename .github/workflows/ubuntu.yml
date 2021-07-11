@@ -27,5 +27,5 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: ubuntu-build.zip
-          path: ./out/make/**/**/*.deb
+          path: ./out/make/deb/x64/*.deb
 

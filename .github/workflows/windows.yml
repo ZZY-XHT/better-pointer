@@ -27,5 +27,5 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: windows-build.zip
-          path: ./out/make/squirrel.windows/x64/better-pointer-*.exe
+          path: ./out/make/squirrel.windows/x64/*.exe
 
