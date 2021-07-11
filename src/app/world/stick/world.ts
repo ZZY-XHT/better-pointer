@@ -49,7 +49,7 @@ const sceneConfig = {
         farPlane: 200
     },
     objectPositions: {
-        camera: new THREE.Vector3(0, 0, 20),
+        camera: new THREE.Vector3(0, 0, 25),
         light: new THREE.Vector3(0, 100, 30)
     }
 };
